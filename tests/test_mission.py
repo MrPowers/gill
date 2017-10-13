@@ -1,6 +1,6 @@
 import pytest
 
-from gill.spark import *
+from gill.spark import get_spark
 from gill.mission import with_life_goal
 
 class TestMission(object):
@@ -10,7 +10,7 @@ class TestMission(object):
             ("jose", 1),
             ("li", 2)
         ]
-        source_df = spark.createDataFrame(
+        source_df = get_spark().createDataFrame(
             source_data,
             ["name", "age"]
         )
@@ -21,7 +21,7 @@ class TestMission(object):
             ("jose", 1, "escape!"),
             ("li", 2, "escape!")
         ]
-        expected_df = spark.createDataFrame(
+        expected_df = get_spark().createDataFrame(
             expected_data,
             ["name", "age", "life_goal"]
         )
